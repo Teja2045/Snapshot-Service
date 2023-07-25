@@ -1,95 +1,133 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+import { Box, Button, Grid, Typography } from "@mui/material";
+import Image from "next/image";
+import Link from "next/link";
+import { getNetworks } from "@/utils/networks";
 
-export default function Home() {
+export default async function Home() {
+  const networksData = await getNetworks();
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <Box>
+      <Typography
+        align="center"
+        sx={{
+          mt: 10,
+          fontSize: { xs: 30, md: 48 },
+          fontFamily: "system-ui",
+          fontWeight: 1000,
+        }}
+      >
+        Trusted PoS Blockchain Validator
+      </Typography>
+      <Typography
+        align="center"
+        sx={{ mt: 2, color: "gray", fontFamily: "system-ui" }}
+      >
+        Vitwit Validators helps investors compound their crypto investments with
+        low commission and advanced support
+      </Typography>
+      <Box marginTop={6}>
+        <Button
+          disableElevation
+          variant="contained"
+          style={{
+            left: "50%",
+            transform: "translateX(-50%)",
+            borderRadius: "8px",
+            fontWeight: "bold",
+            textTransform: "none",
+          }}
+          href="#supported-networks"
+        >
+          Stake with Vitwit
+        </Button>
+        <Box marginTop={25} marginBottom={10}>
+          <Typography
+            align="center"
+            sx={{
+              fontSize: { xs: 23, md: 30 },
+              fontFamily: "system-ui",
+              fontWeight: 1000,
+            }}
           >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+            Why Stake with Vitwit
+          </Typography>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
+          <Grid container direction={"row"} marginTop={1} spacing={10}>
+            <Grid item xs="6" sm="3">
+              <Typography sx={{ fontSize: 20 }}>
+                Low commission rate and zero slashing since inception
+              </Typography>
+            </Grid>
+            <Grid item xs="6" sm="3">
+              <Typography sx={{ fontSize: 20 }}>
+                Awesome community tools for developers and node operators
+              </Typography>
+            </Grid>
+            <Grid item xs="6" sm="3">
+              <Typography sx={{ fontSize: 20 }}>
+                Enterprise-grade security with zero downtime upgrade
+              </Typography>
+            </Grid>
+            <Grid item xs="6" sm="3">
+              <Typography sx={{ fontSize: 20 }}>
+                Fully compliant with chain protocol and actively participating
+                in chain governance
+              </Typography>
+            </Grid>
+          </Grid>
+        </Box>
+      </Box>
+      <Box
+        id="supported-networks"
+        sx={{ backgroundColor: "rgb(15 23 42)", padding: 6 }}
+      >
+        <Typography
+          align="center"
+          sx={{
+            fontSize: { xs: 22, md: 34 },
+            color: "white",
+            fontFamily: "system-ui",
+            fontWeight: 1000,
+            marginBottom: 4,
+          }}
         >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+          Supported Networks
+        </Typography>
+        <Grid container spacing={2}>
+          {networksData.chains.map((chain, index) => (
+            <Grid item xs={6} sm={3} key={index}>
+              <Grid container direction="column" alignItems="center">
+                <Grid item>
+                  <Image
+                    src={"/8ball.png"}
+                    width={100}
+                    height={100}
+                    alt="Loading.."
+                    style={{ border: "5px solid white", borderRadius: "50%" }}
+                  ></Image>
+                </Grid>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+                <Grid item>
+                  <Link href={`/networks/${chain["chain-name"]}`}>
+                    <Typography
+                      sx={{
+                        color: "white",
+                        "&:hover": {
+                          color: "purple",
+                        },
+                      }}
+                      align="center"
+                    >
+                      {chain["chain-name"].charAt(0).toUpperCase() +
+                        chain["chain-name"].slice(1)}
+                    </Typography>
+                  </Link>
+                </Grid>
+              </Grid>
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
+    </Box>
+  );
 }
