@@ -2,7 +2,7 @@ import { Box, Button, Grid, Paper, Typography } from "@mui/material";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { getNetworkDetails } from "@/utils/networks";
+import { getNetworkDetails, getNetworks } from "@/utils/networks";
 import { getButtonsArray} from "@/utils/networkButtons"
 
 
@@ -41,7 +41,7 @@ const NetworkPage = async ({ params }) => {
             </Typography>
             <Typography sx={{ mt: 2 }}>
               <span style={{ fontWeight: "bold" }}>
-                Staked Tokens With Polkachu:
+                Staked Tokens With Vitwit:
               </span>
               4,331,667EBL
             </Typography>
@@ -104,5 +104,19 @@ const NetworkPage = async ({ params }) => {
     </Box>
   );
 };
+
+export async function generateMetadata({params}) {
+  return {
+    title:params.network,
+    description: "network details"
+  }
+}
+
+export async function generateStaticParams() {
+  const networksData = await getNetworks();
+  return networksData.chains.map((network) => ({
+    network: network['chain-name'].toString(),
+  }))
+}
 
 export default NetworkPage;
