@@ -12,9 +12,15 @@ export const getNetworkDetails = async (network) => {
   const networksData = await getNetworks();
   const networks = networksData.chains;
   for (let i = 0; i < networks.length; i++) {
+    console.log("Compare", networks[i]["chain-name"], network);
     if (networks[i]["chain-name"] === network) {
       return networks[i];
     }
-    return null;
   }
+  return null;
+};
+
+export const getSnapshotURL = async (network) => {
+  const networkDetails = await getNetworkDetails(network);
+  return networkDetails?.["snapshot-url"] || "";
 };
