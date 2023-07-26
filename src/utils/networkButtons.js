@@ -6,7 +6,7 @@ export const getButtonsArray = (network) => {
     },
     {
       title: "Node Snapshot",
-      link: network?.["snapshot-url"] || "",
+      link: `/networks/${network?.["chain-name"]}/node_snapshot`,
     },
     {
       title: "Live Peers",

@@ -18,3 +18,8 @@ export const getNetworkDetails = async (network) => {
   }
   return null;
 };
+
+export const getSnapshotURL = async (network) => {
+  const networkDetails = await getNetworkDetails(network);
+  return networkDetails?.["snapshot-url"] || "";
+};
