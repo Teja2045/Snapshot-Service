@@ -15,6 +15,6 @@ export const getNetworkDetails = async (network) => {
     if (networks[i]["chain-name"] === network) {
       return networks[i];
     }
-    return null;
   }
+  return null;
 };
