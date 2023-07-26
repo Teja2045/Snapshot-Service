@@ -1,5 +1,3 @@
-"use-client"
-
 import {
   Box,
   Table,
@@ -20,10 +18,9 @@ import Terminal from "@/components/Terminal";
 import { getSnapshotURL } from "@/utils/networks";
 import Link from "next/link";
 
-const SnapshotPage = ({ params }) => {
+const SnapshotPage = async ({ params }) => {
   const { network } = params;
-  console.log("snap", params);
-  const SNAPSHOT_URL = getSnapshotURL(network);
+  const SNAPSHOT_URL = await getSnapshotURL(network);
   return (
     <Box sx={{ marginTop: 10, mr: 2 }}>
       <Box sx={{ mb: 7 }}>
@@ -36,25 +33,26 @@ const SnapshotPage = ({ params }) => {
           v0.22.7
         </Typography>
         <Box>
-          <Table sx={{ml:5, mr:5}}>
+          <Table sx={{ width:"80%" }} align="center">
             <TableHead>
-              <TableRow sx={{backgroundColor:'#f1f5f9'}}>
-                <TableCell>LATEST</TableCell>
-                <TableCell>BLOCK HEIGHT</TableCell>
-                <TableCell>SIZE</TableCell>
-                <TableCell>TIMESTAMP</TableCell>
-                <TableCell>DOWNLOAD</TableCell>
+              <TableRow sx={{ backgroundColor: "#f1f5f9" }}>
+                <TableCell width="20%">LATEST</TableCell>
+                <TableCell width="20%">BLOCK HEIGHT</TableCell>
+                <TableCell width="20%">SIZE</TableCell>
+                <TableCell width="20%">TIMESTAMP</TableCell>
+                <TableCell width="20%">DOWNLOAD</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               <TableRow>
-              <TableCell>...?</TableCell>
-              <TableCell>...?</TableCell>
-              <TableCell>...?</TableCell>
-              <TableCell>...?</TableCell>
-              <TableCell><Button href={SNAPSHOT_URL}>{SNAPSHOT_URL}</Button></TableCell>
+                <TableCell>...?</TableCell>
+                <TableCell>...?</TableCell>
+                <TableCell>...?</TableCell>
+                <TableCell>...?</TableCell>
+                <TableCell>
+                  <Link href={SNAPSHOT_URL}>{SNAPSHOT_URL}</Link>
+                </TableCell>
               </TableRow>
-              
             </TableBody>
           </Table>
         </Box>

@@ -12,7 +12,6 @@ export const getNetworkDetails = async (network) => {
   const networksData = await getNetworks();
   const networks = networksData.chains;
   for (let i = 0; i < networks.length; i++) {
-    console.log("Compare", networks[i]["chain-name"], network);
     if (networks[i]["chain-name"] === network) {
       return networks[i];
     }

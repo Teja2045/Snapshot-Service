@@ -1,5 +1,4 @@
 export const getButtonsArray = (network) => {
-  console.log("_____________---", network);
   return [
     {
       title: "State-Sync",
