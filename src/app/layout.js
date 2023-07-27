@@ -7,10 +7,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" style={{scrollBehavior:'smooth'}}>
-      <body
-        style={{ backgroundColor: "#f8fafc", margin:"0" }}
-      >
+    <html lang="en" style={{ scrollBehavior: "smooth" }}>
+      <head>
+        <link rel="icon" href="/favicon.ico"/>
+      </head>
+      <body style={{ backgroundColor: "#f8fafc", margin: "0" }}>
         <Navbar />
         {children}
       </body>

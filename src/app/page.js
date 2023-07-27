@@ -47,7 +47,7 @@ export default async function Home() {
               <Grid container direction="column" alignItems="center">
                 <Grid item>
                   <Image
-                    src={"/8ball.png"}
+                    src={`/${chain['chain-name']}.png`}
                     width={100}
                     height={100}
                     alt="Loading.."
