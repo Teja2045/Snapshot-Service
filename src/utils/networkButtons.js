@@ -25,10 +25,6 @@ export const getButtonsArray = (network) => {
       link: "",
     },
     {
-      title: "Node CLI Cheatsheet",
-      link: "",
-    },
-    {
       title: "RPC Endpoint",
       link: network?.["rpc"] || "",
     },
@@ -41,24 +37,8 @@ export const getButtonsArray = (network) => {
       link: "",
     },
     {
-      title: "IBC Relaying",
-      link: "",
-    },
-    {
-      title: "Network Scan",
-      link: "",
-    },
-    {
-      title: "Auto Compounding",
-      link: "",
-    },
-    {
-      title: "Chain Upgrade Watcher",
-      link: "",
-    },
-    {
-      title: "Governance Partition",
-      link: "",
+      title: "Governance Partition*",
+      link: `/networks/${network?.["chain-name"]}/governance_participation`,
     },
   ];
 };

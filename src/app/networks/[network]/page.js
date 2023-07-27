@@ -39,12 +39,7 @@ const NetworkPage = async ({ params }) => {
               <span style={{ fontWeight: "bold" }}>Current Node Version: </span>{" "}
               v1.0.0
             </Typography>
-            <Typography sx={{ mt: 2 }}>
-              <span style={{ fontWeight: "bold" }}>
-                Staked Tokens With Vitwit:
-              </span>
-              4,331,667EBL
-            </Typography>
+            
             <Typography sx={{ mt: 2 }}>
               Agoric is an open-source development company launching an
               interoperable Proof-of-Stake chain and economy. Our
@@ -54,11 +49,7 @@ const NetworkPage = async ({ params }) => {
               typically use Keplr or Ping to access your wallet and stake with
               Polkachu. The staking link is provided below.
             </Typography>
-            <Box display="flex" justifyContent="center">
-              <Button sx={{ mt: 7 }} variant="contained">
-                Stake with Vitwit
-              </Button>
-            </Box>
+            
           </Box>
         </Box>
       </Box>
