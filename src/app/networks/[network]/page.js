@@ -32,7 +32,7 @@ const NetworkPage = async ({ params }) => {
               <span style={{ fontWeight: "bold" }}>Network Type:</span> Mainnet
             </Typography>
             <Typography sx={{ mt: 2 }}>
-              <span style={{ fontWeight: "bold" }}>Chain ID:</span> networkName
+              <span style={{ fontWeight: "bold" }}>Chain ID:</span> {network['chain-id']}
             </Typography>
             <Typography sx={{ mt: 2 }}>
               <span style={{ fontWeight: "bold" }}>Current Node Version: </span>{" "}
