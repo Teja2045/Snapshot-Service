@@ -15,12 +15,16 @@ import {
   processingSnapshot,
 } from "../../../../utils/snapshotData";
 import Terminal from "@/components/Terminal";
-import { getSnapshotURL } from "@/utils/networks";
+import { getNetworkDetails } from "@/utils/networks";
 import Link from "next/link";
 
 const SnapshotPage = async ({ params }) => {
   const { network } = params;
-  const SNAPSHOT_URL = await getSnapshotURL(network);
+  const networkDetails = await getNetworkDetails(network);
+  const networkID = networkDetails["chain-id"];
+  const SNAPSHOT_URL = networkDetails["snapshot-url"];
+  
+  const blockHeight = networkDetails["height"];
   return (
     <Box sx={{ marginTop: 10, mr: 2 }}>
       <Box sx={{ mb: 7 }}>
@@ -28,12 +32,12 @@ const SnapshotPage = async ({ params }) => {
           {toFirstLetterCapital(network)} Node Snapshot
         </Typography>
         <Typography align="center">
-          <span style={{ fontWeight: "bold" }}> Chain ID</span>: akashnet-2 |
+          <span style={{ fontWeight: "bold" }}> Chain ID</span>: {networkID} |
           <span style={{ fontWeight: "bold" }}> Current Node Version</span>:
           v0.22.7
         </Typography>
         <Box>
-          <Table sx={{ width:"80%" }} align="center">
+          <Table sx={{ width: "80%" }} align="center">
             <TableHead>
               <TableRow sx={{ backgroundColor: "#f1f5f9" }}>
                 <TableCell width="20%">LATEST</TableCell>
@@ -46,7 +50,7 @@ const SnapshotPage = async ({ params }) => {
             <TableBody>
               <TableRow>
                 <TableCell>...?</TableCell>
-                <TableCell>...?</TableCell>
+                <TableCell>{blockHeight}</TableCell>
                 <TableCell>...?</TableCell>
                 <TableCell>...?</TableCell>
                 <TableCell>

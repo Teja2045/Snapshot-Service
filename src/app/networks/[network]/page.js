@@ -3,11 +3,10 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { getNetworkDetails, getNetworks } from "@/utils/networks";
-import { getButtonsArray} from "@/utils/networkButtons"
-
+import { getButtonsArray } from "@/utils/networkButtons";
 
 const NetworkPage = async ({ params }) => {
-  const network = await getNetworkDetails( params.network);
+  const network = await getNetworkDetails(params.network);
   const buttonsArray = getButtonsArray(network);
   const networkName = params.network;
   return (
@@ -33,18 +32,13 @@ const NetworkPage = async ({ params }) => {
               <span style={{ fontWeight: "bold" }}>Network Type:</span> Mainnet
             </Typography>
             <Typography sx={{ mt: 2 }}>
-              <span style={{ fontWeight: "bold" }}>Chain ID:</span> networkName
+              <span style={{ fontWeight: "bold" }}>Chain ID:</span> {network['chain-id']}
             </Typography>
             <Typography sx={{ mt: 2 }}>
               <span style={{ fontWeight: "bold" }}>Current Node Version: </span>{" "}
               v1.0.0
             </Typography>
-            <Typography sx={{ mt: 2 }}>
-              <span style={{ fontWeight: "bold" }}>
-                Staked Tokens With Vitwit:
-              </span>
-              4,331,667EBL
-            </Typography>
+
             <Typography sx={{ mt: 2 }}>
               Agoric is an open-source development company launching an
               interoperable Proof-of-Stake chain and economy. Our
@@ -54,15 +48,10 @@ const NetworkPage = async ({ params }) => {
               typically use Keplr or Ping to access your wallet and stake with
               Polkachu. The staking link is provided below.
             </Typography>
-            <Box display="flex" justifyContent="center">
-              <Button sx={{ mt: 7 }} variant="contained">
-                Stake with Vitwit
-              </Button>
-            </Box>
           </Box>
         </Box>
       </Box>
-      <Box margin={9} sx={{ marginTop: 12 }}>
+      <Box margin={{xs:3, md:9}} sx={{ marginTop: 12 }}>
         <Box>
           <Typography variant="h4" fontWeight="bold" textAlign="center">
             Community Tools & Services
@@ -80,10 +69,10 @@ const NetworkPage = async ({ params }) => {
                     elevation={0}
                     sx={{
                       backgroundColor: "white",
-                      paddingLeft: 4,
-                      paddingRight: 4,
-                      paddingTop: 3,
-                      paddingBottom: 3,
+                      paddingLeft: { xs: 1, md: 4 },
+                      paddingRight: { xs: 1, md: 4 },
+                      paddingTop: { xs: 1, md: 3 },
+                      paddingBottom: { xs: 1, md: 3 },
                       minWidth: "150px",
                       minHeight: "60px",
                       "&:hover": {
@@ -91,7 +80,10 @@ const NetworkPage = async ({ params }) => {
                       },
                     }}
                   >
-                    <Typography fontSize={24} textAlign="center">
+                    <Typography
+                      fontSize={{ xs: 16, md: 24 }}
+                      textAlign="center"
+                    >
                       {buttonDetails.title}
                     </Typography>
                   </Paper>
@@ -105,18 +97,18 @@ const NetworkPage = async ({ params }) => {
   );
 };
 
-export async function generateMetadata({params}) {
+export async function generateMetadata({ params }) {
   return {
-    title:params.network,
-    description: "network details"
-  }
+    title: params.network,
+    description: "network details",
+  };
 }
 
 export async function generateStaticParams() {
   const networksData = await getNetworks();
   return networksData.chains.map((network) => ({
-    network: network['chain-name'].toString(),
-  }))
+    network: network["chain-name"].toString(),
+  }));
 }
 
 export default NetworkPage;

@@ -10,22 +10,7 @@ const Navbar = () => {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Link
-            href="/"
-            style={{
-              textDecoration: "none",
-              fontWeight: 500,
-              fontSize: 25,
-              letterSpacing: ".1rem",
-              color: "white",
-              "&:hover": {
-                color: "pink",
-                fontSize: 26,
-              },
-            }}
-          >
-            Home
-          </Link>
+          
           <Image
             src="/vitwit-logo.png"
             width={150}

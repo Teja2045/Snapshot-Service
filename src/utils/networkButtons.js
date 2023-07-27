@@ -2,7 +2,7 @@ export const getButtonsArray = (network) => {
   return [
     {
       title: "State-Sync",
-      link: "",
+      link: `/networks/${network?.["chain-name"]}/state_sync`,
     },
     {
       title: "Node Snapshot",
@@ -10,55 +10,35 @@ export const getButtonsArray = (network) => {
     },
     {
       title: "Live Peers",
-      link: "",
+      link: `/networks/${network?.["chain-name"]}/live_peers`,
     },
     {
       title: "Seed Node",
-      link: "",
+      link: `/networks/${network?.["chain-name"]}/seed_node`,
     },
     {
       title: "Addrbook File",
-      link: "",
+      link: `/networks/${network?.["chain-name"]}/addrbook_file`,
     },
     {
       title: "Genesis File",
-      link: "",
-    },
-    {
-      title: "Node CLI Cheatsheet",
-      link: "",
+      link: `/networks/${network?.["chain-name"]}/genesis_file`,
     },
     {
       title: "RPC Endpoint",
-      link: network?.["rpc"] || "",
+      link: `/networks/${network?.["chain-name"]}/rpc_endpoint`,
     },
     {
       title: "API Endpoint",
-      link: network?.["api"] || "",
+      link: `/networks/${network?.["chain-name"]}/api_endpoint`,
     },
     {
       title: "gRPC Endpoint",
-      link: "",
+      link: `/networks/${network?.["chain-name"]}/gRPC_endpoint`,
     },
     {
-      title: "IBC Relaying",
-      link: "",
-    },
-    {
-      title: "Network Scan",
-      link: "",
-    },
-    {
-      title: "Auto Compounding",
-      link: "",
-    },
-    {
-      title: "Chain Upgrade Watcher",
-      link: "",
-    },
-    {
-      title: "Governance Partition",
-      link: "",
+      title: "Governance Partition*",
+      link: `/networks/${network?.["chain-name"]}/governance_participation`,
     },
   ];
 };

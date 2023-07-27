@@ -25,61 +25,9 @@ export default async function Home() {
         Vitwit Validators helps investors compound their crypto investments with
         low commission and advanced support
       </Typography>
-      <Box marginTop={6}>
-        <Button
-          disableElevation
-          variant="contained"
-          style={{
-            left: "50%",
-            transform: "translateX(-50%)",
-            borderRadius: "8px",
-            fontWeight: "bold",
-            textTransform: "none",
-          }}
-          href="#supported-networks"
-        >
-          Stake with Vitwit
-        </Button>
-        <Box marginTop={25} marginBottom={10}>
-          <Typography
-            align="center"
-            sx={{
-              fontSize: { xs: 23, md: 30 },
-              fontFamily: "system-ui",
-              fontWeight: 1000,
-            }}
-          >
-            Why Stake with Vitwit
-          </Typography>
-
-          <Grid container direction={"row"} marginTop={1} spacing={10}>
-            <Grid item xs="6" sm="3">
-              <Typography sx={{ fontSize: 20 }}>
-                Low commission rate and zero slashing since inception
-              </Typography>
-            </Grid>
-            <Grid item xs="6" sm="3">
-              <Typography sx={{ fontSize: 20 }}>
-                Awesome community tools for developers and node operators
-              </Typography>
-            </Grid>
-            <Grid item xs="6" sm="3">
-              <Typography sx={{ fontSize: 20 }}>
-                Enterprise-grade security with zero downtime upgrade
-              </Typography>
-            </Grid>
-            <Grid item xs="6" sm="3">
-              <Typography sx={{ fontSize: 20 }}>
-                Fully compliant with chain protocol and actively participating
-                in chain governance
-              </Typography>
-            </Grid>
-          </Grid>
-        </Box>
-      </Box>
       <Box
         id="supported-networks"
-        sx={{ backgroundColor: "rgb(15 23 42)", padding: 6 }}
+        sx={{ backgroundColor: "rgb(15 23 42)", padding: 6, mt:15 }}
       >
         <Typography
           align="center"
@@ -99,7 +47,7 @@ export default async function Home() {
               <Grid container direction="column" alignItems="center">
                 <Grid item>
                   <Image
-                    src={"/8ball.png"}
+                    src={`/${chain['chain-name']}.png`}
                     width={100}
                     height={100}
                     alt="Loading.."
