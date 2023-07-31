@@ -51,7 +51,7 @@ const NetworkPage = async ({ params }) => {
           </Box>
         </Box>
       </Box>
-      <Box margin={{xs:3, md:9}} sx={{ marginTop: 12 }}>
+      <Box margin={{ xs: 3, md: 9 }} sx={{ marginTop: 12 }}>
         <Box>
           <Typography variant="h4" fontWeight="bold" textAlign="center">
             Community Tools & Services
@@ -78,11 +78,13 @@ const NetworkPage = async ({ params }) => {
                       "&:hover": {
                         backgroundColor: "purple",
                       },
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
                     }}
                   >
                     <Typography
                       fontSize={{ xs: 16, md: 24 }}
-                      textAlign="center"
                     >
                       {buttonDetails.title}
                     </Typography>
