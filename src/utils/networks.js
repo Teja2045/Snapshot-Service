@@ -1,7 +1,7 @@
 const NETWORKS_API = "https://snapshot.witval.com/chains-info/latest.json";
 
 export const getNetworks = async () => {
-  const res = await fetch(NETWORKS_API);
+  const res = await fetch(NETWORKS_API, { next: { revalidate: 86400 } });
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
