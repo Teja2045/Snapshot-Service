@@ -10,14 +10,15 @@ const Navbar = () => {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          
+          <Link href={"/"}>
           <Image
             src="/vitwit-logo.png"
             width={150}
             height={40}
             alt="app-logo"
-            style={{ marginLeft: "auto" }}
+            
           ></Image>
+          </Link>
         </Toolbar>
       </Container>
     </AppBar>

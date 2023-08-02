@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import { getNetworks } from "@/utils/networks";
@@ -27,7 +27,7 @@ export default async function Home() {
       </Typography>
       <Box
         id="supported-networks"
-        sx={{ backgroundColor: "rgb(15 23 42)", padding: 6, mt:15 }}
+        sx={{ backgroundColor: "rgb(15 23 42)", padding: 6, mt: 15 }}
       >
         <Typography
           align="center"
@@ -46,13 +46,18 @@ export default async function Home() {
             <Grid item xs={6} sm={3} key={index}>
               <Grid container direction="column" alignItems="center">
                 <Grid item>
-                  <Image
-                    src={`/${chain['chain-name']}.png`}
-                    width={100}
-                    height={100}
-                    alt="Loading.."
-                    style={{ border: "5px solid white", borderRadius: "50%" }}
-                  ></Image>
+                  <Link href={`/networks/${chain["chain-name"]}`}>
+                    <Image
+                      src={`/${chain["chain-name"]}.png`}
+                      width={100}
+                      height={100}
+                      alt="Loading.."
+                      style={{
+                        border: "5px solid white",
+                        borderRadius: "50%",
+                      }}
+                    ></Image>
+                  </Link>
                 </Grid>
 
                 <Grid item>

@@ -27,26 +27,17 @@ const NetworkPage = async ({ params }) => {
           </Box>
         </Box>
         <Box>
-          <Box sx={{ marginTop: 7 }}>
+          <Box sx={{ marginTop: 7, mb: 10 }}>
             <Typography sx={{ mt: 2 }}>
               <span style={{ fontWeight: "bold" }}>Network Type:</span> Mainnet
             </Typography>
             <Typography sx={{ mt: 2 }}>
-              <span style={{ fontWeight: "bold" }}>Chain ID:</span> {network['chain-id']}
+              <span style={{ fontWeight: "bold" }}>Chain ID:</span>{" "}
+              {network["chain-id"]}
             </Typography>
             <Typography sx={{ mt: 2 }}>
               <span style={{ fontWeight: "bold" }}>Current Node Version: </span>{" "}
               v1.0.0
-            </Typography>
-
-            <Typography sx={{ mt: 2 }}>
-              Agoric is an open-source development company launching an
-              interoperable Proof-of-Stake chain and economy. Our
-              JavaScript-native smart contract platform offers developers a
-              safe, reusable library of DeFi components to rapidly build and
-              deploy on-chain. Agoric is a Tendermint-based chain. You can
-              typically use Keplr or Ping to access your wallet and stake with
-              Polkachu. The staking link is provided below.
             </Typography>
           </Box>
         </Box>
@@ -83,9 +74,7 @@ const NetworkPage = async ({ params }) => {
                       alignItems: "center",
                     }}
                   >
-                    <Typography
-                      fontSize={{ xs: 16, md: 24 }}
-                    >
+                    <Typography fontSize={{ xs: 16, md: 24 }}>
                       {buttonDetails.title}
                     </Typography>
                   </Paper>

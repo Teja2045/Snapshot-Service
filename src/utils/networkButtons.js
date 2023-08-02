@@ -37,7 +37,7 @@ export const getButtonsArray = (network) => {
       link: `/networks/${network?.["chain-name"]}/gRPC_endpoint`,
     },
     {
-      title: "Governance Partition*",
+      title: "Governance Participation*",
       link: `/networks/${network?.["chain-name"]}/governance_participation`,
     },
   ];
