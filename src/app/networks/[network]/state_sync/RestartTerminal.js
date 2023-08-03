@@ -1,11 +1,11 @@
 "use client";
-import { Box, Typography, Tooltip, IconButton } from "@mui/material";
+import { Box, Typography, Tooltip, IconButton, Stack } from "@mui/material";
 import React from "react";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { useState } from "react";
 
-const SnapshotTerminal = (props) => {
+const RestartTerminal = (props) => {
   const { SNAPSHOT_URL } = props;
   const [copied, setCopied] = useState(false);
 
@@ -58,23 +58,9 @@ const SnapshotTerminal = (props) => {
             )}
           </IconButton>
         </Tooltip>
-        <Typography>sudo systemctl stop andromedad</Typography>
+
         <Typography>
-          cp $HOME/.andromedad/data/priv_validator_state.json
-          $HOME/.andromedad/priv_validator_state.json.backup
-        </Typography>
-        <Typography>
-          rm -rf $HOME/.andromedad/data $HOME/.andromedad/wasm
-        </Typography>
-        <Typography>
-          wget -c {SNAPSHOT_URL} -O - | tar -xz -C $HOME/.andromedad
-        </Typography>
-        <Typography>
-          mv $HOME/.andromedad/priv_validator_state.json.backup
-          $HOME/.andromedad/data/priv_validator_state.json
-        </Typography>
-        <Typography>
-          sudo systemctl start andromedad && sudo journalctl -u andromedad -f
+          sudo systemctl start andromedad && journalctl -u andromedad -f
           --no-hostname -o cat
         </Typography>
       </Box>
@@ -82,4 +68,4 @@ const SnapshotTerminal = (props) => {
   );
 };
 
-export default SnapshotTerminal;
+export default RestartTerminal;

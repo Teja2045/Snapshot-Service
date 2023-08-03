@@ -6,13 +6,15 @@ import {
   TableCell,
   Typography,
   TableRow,
+  Stack,
 } from "@mui/material";
 
 import React from "react";
 import { toFirstLetterCapital } from "@/utils/format";
 import { getNetworkDetails } from "@/utils/networks";
 import Link from "next/link";
-import Terminal from "@/app/networks/[network]/node_snapshot/SnapshotTerminal";
+import SnapshotTerminal from "@/app/networks/[network]/node_snapshot/SnapshotTerminal";
+import TipsAndUpdatesIcon from "@mui/icons-material/TipsAndUpdates";
 
 const SnapshotPage = async ({ params }) => {
   const { network } = params;
@@ -58,15 +60,19 @@ const SnapshotPage = async ({ params }) => {
         </Box>
       </Box>
 
-      <Box sx={{ ml: 6, mt: 10, mb: 10 }}>
-        <Typography variant="h5" sx={{ color: "red", mb: 5 }}>
-          Please be sure to use the latest binary version.
+      <Box sx={{ ml: { xs: 2, md: 6 }, mt: 10, mb: 10 }}>
+        <Typography sx={{ color: "red", fontWeight: 700, mb: 3 }}>
+          Please be sure to use the latest binary version:
         </Typography>
-        <Typography sx={{ mb: 1 }}>
-          The best way is just copy and past this code below in your terminal
-          and that's it ! Your snapshot will be done.
-        </Typography>
-        <Terminal SNAPSHOT_URL={SNAPSHOT_URL} />
+        <Stack direction={"row"} sx={{ mb: 1 }}>
+          <TipsAndUpdatesIcon sx={{ mr: 1 }} />
+          <Typography sx={{ mb: 1 }}>
+            The best way is just copy and past this code below in your terminal
+            and that's it ! Your snapshot will be done.
+          </Typography>
+        </Stack>
+
+        <SnapshotTerminal SNAPSHOT_URL={SNAPSHOT_URL} />
       </Box>
     </Box>
   );

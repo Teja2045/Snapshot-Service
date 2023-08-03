@@ -1,11 +1,11 @@
 "use client";
-import { Box, Typography, Tooltip, IconButton } from "@mui/material";
+import { Box, Typography, Tooltip, IconButton, Stack } from "@mui/material";
 import React from "react";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { useState } from "react";
 
-const SnapshotTerminal = (props) => {
+const StartTerminal = (props) => {
   const { SNAPSHOT_URL } = props;
   const [copied, setCopied] = useState(false);
 
@@ -60,26 +60,21 @@ const SnapshotTerminal = (props) => {
         </Tooltip>
         <Typography>sudo systemctl stop andromedad</Typography>
         <Typography>
-          cp $HOME/.andromedad/data/priv_validator_state.json
-          $HOME/.andromedad/priv_validator_state.json.backup
+          SNAP_RPC="https://rpc.galileo-3.andromeda.aviaone.com:443"{" "}
         </Typography>
+        <Typography>/^trust_height =/ s/=.*/= 0/;\ </Typography>
         <Typography>
-          rm -rf $HOME/.andromedad/data $HOME/.andromedad/wasm
+          LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r
+          .result.block.header.height); \
         </Typography>
+        <Typography>BLOCK_HEIGHT=$((LATEST_HEIGHT - 1000)); \ </Typography>
         <Typography>
-          wget -c {SNAPSHOT_URL} -O - | tar -xz -C $HOME/.andromedad
-        </Typography>
-        <Typography>
-          mv $HOME/.andromedad/priv_validator_state.json.backup
-          $HOME/.andromedad/data/priv_validator_state.json
-        </Typography>
-        <Typography>
-          sudo systemctl start andromedad && sudo journalctl -u andromedad -f
-          --no-hostname -o cat
+          TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r
+          .result.block_id.hash)
         </Typography>
       </Box>
     </Box>
   );
 };
 
-export default SnapshotTerminal;
+export default StartTerminal;
