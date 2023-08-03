@@ -60,7 +60,7 @@ const StartTerminal = (props) => {
         </Tooltip>
         <Typography>sudo systemctl stop andromedad</Typography>
         <Typography>
-          SNAP_RPC="https://rpc.galileo-3.andromeda.aviaone.com:443"{" "}
+          SNAP_RPC="https://rpc.galileo-3.andromeda.aviaone.com:443"
         </Typography>
         <Typography>/^trust_height =/ s/=.*/= 0/;\ </Typography>
         <Typography>

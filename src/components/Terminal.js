@@ -49,7 +49,7 @@ const Terminal = (props) => {
               color: "white",
               position: "absolute",
             }}
-            size="small" // Set the size to "small" to decrease the button size
+            size="small"
             onClick={() => handleCopyToClipboard()}
           >
             {copied ? (

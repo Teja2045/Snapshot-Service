@@ -49,7 +49,6 @@ const CheckTerminal = (props) => {
               color: "white",
               position: "absolute",
             }}
-            size="small" // Set the size to "small" to decrease the button size
             onClick={() => handleCopyToClipboard()}
           >
             {copied ? (
